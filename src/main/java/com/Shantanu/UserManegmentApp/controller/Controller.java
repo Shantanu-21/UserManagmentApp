@@ -7,6 +7,6 @@ import com.Shantanu.UserManegmentApp.service.ServiceIMPL;
 
 @RestController
 public class Controller {
-@Autowired
+	@Autowired
 	private ServiceIMPL serviceIMPL;
 }
