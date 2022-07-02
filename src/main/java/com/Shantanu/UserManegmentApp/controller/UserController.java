@@ -1,12 +1,12 @@
 package com.Shantanu.UserManegmentApp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Controller;
 
 import com.Shantanu.UserManegmentApp.service.ServiceIMPL;
 
-@RestController
-public class Controller {
+@Controller
+public class UserController {
 	@Autowired
 	private ServiceIMPL serviceIMPL;
 }
