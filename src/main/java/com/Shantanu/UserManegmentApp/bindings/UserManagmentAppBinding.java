@@ -14,8 +14,9 @@ public class UserManagmentAppBinding {
 	private String dob;
 	private long num;
 	private String gendar;
-	private Integer city_id;
-	private Integer state_id;
-	private Integer country_id;
+	private String cityName;
+	private String countryName;
+	private String stateName;
+	private String accStatus;
 
 }

@@ -40,11 +40,11 @@ public class UserAccounts {
 	@Column(name ="USER_GENDAR" )
 	private String gendar;
 	@Column(name ="USER_CITYNAME" )
-	private Integer city_name;
+	private String cityName;
 	@Column(name ="USER_STATENAME" )
-	private Integer state_name;
+	private String stateName;
 	@Column(name ="USER_COUNTRYNAME" )
-	private Integer country_name;
+	private String countryName;
 	@Column(name = "ACCOUNTSTATUS")
 	private String accStatus;
 	@Column(name ="CREATE_DATE",updatable = false)

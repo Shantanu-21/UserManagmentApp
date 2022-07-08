@@ -11,5 +11,6 @@ public interface UserAccountrepositories extends JpaRepository<UserAccounts, Ser
 	
 public	UserAccounts findByEmailAndPassword(String email,String password);
 	
+public UserAccounts findByEmail(String email);
 	
 }

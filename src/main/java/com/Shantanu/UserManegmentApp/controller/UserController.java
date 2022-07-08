@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.Shantanu.UserManegmentApp.bindings.UserManagmentAppBinding;
 import com.Shantanu.UserManegmentApp.entities.Country;
+import com.Shantanu.UserManegmentApp.entities.UserAccounts;
 import com.Shantanu.UserManegmentApp.service.ServiceIMPL;
 
 @Controller
@@ -43,5 +45,27 @@ public class UserController {
 		return new ResponseEntity<Map<Integer, String>>(city, HttpStatus.OK);
 
 	}
-
+	@GetMapping("/uniqEmail/{email}")
+public ResponseEntity<String> uniqEmail(@PathVariable String email)
+{
+		boolean uniqEmil = serviceIMPL.uniqEmil(email);
+		if(uniqEmil==true) {
+			String msg="Your Email is currect";
+	return new ResponseEntity<String> (msg,HttpStatus.OK);
+		}else {
+			String msg="Your Email is Not currect";
+			return new ResponseEntity<String> (msg,HttpStatus.BAD_REQUEST);}
+		}
+	@PostMapping("/saveAllRecord")
+	public ResponseEntity<String> saveAllRecord(@RequestBody UserManagmentAppBinding userManagmentAppBinding){
+		boolean saveUser = serviceIMPL.saveUser(userManagmentAppBinding);
+		if(saveUser== true) 
+		{
+			String msg="Data Save Successfully";
+		return new ResponseEntity<String> (msg,HttpStatus.OK); }else {
+			String msg="Data is not Save Successful";
+			return new ResponseEntity<String> (msg,HttpStatus.BAD_REQUEST);
+		}
+		}
+		
 }

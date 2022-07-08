@@ -2,6 +2,7 @@ package com.Shantanu.UserManegmentApp.service;
 
 import java.util.Map;
 
+import com.Shantanu.UserManegmentApp.bindings.UserManagmentAppBinding;
 import com.Shantanu.UserManegmentApp.bindings.Userloginbinding;
 
 public interface ServiceI {
@@ -11,4 +12,6 @@ public interface ServiceI {
 	 public Map<Integer, String> getCountrys();
 	 public Map<Integer, String> getStates(Integer countryId);
      public Map<Integer, String> getCity(Integer stateId);
+     public boolean uniqEmil(String email);
+     public boolean saveUser(UserManagmentAppBinding userManagmentAppBinding);
 }

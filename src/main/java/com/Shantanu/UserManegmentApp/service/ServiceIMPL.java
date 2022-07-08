@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.Shantanu.UserManegmentApp.bindings.UserManagmentAppBinding;
 import com.Shantanu.UserManegmentApp.bindings.Userloginbinding;
 import com.Shantanu.UserManegmentApp.entities.Cities;
 import com.Shantanu.UserManegmentApp.entities.Country;
@@ -16,6 +19,8 @@ import com.Shantanu.UserManegmentApp.repositories.CitiesRepositories;
 import com.Shantanu.UserManegmentApp.repositories.Conutryrepositories;
 import com.Shantanu.UserManegmentApp.repositories.StatesRepositories;
 import com.Shantanu.UserManegmentApp.repositories.UserAccountrepositories;
+
+import net.bytebuddy.utility.RandomString;
 
 @Service
 public class ServiceIMPL implements ServiceI {
@@ -85,5 +90,41 @@ public class ServiceIMPL implements ServiceI {
 
 		return citymap;
 	}
+	// --------------------------------------------------------------------------------//
 
+	@Override
+	public boolean uniqEmil(String email) {
+		UserAccounts findByEmail = userAccountrepositories.findByEmail(email);
+		if (findByEmail == null) {
+			return false;
+		} else {
+			return true;
+		}
 	}
+	// --------------------------------------------------------------------------------//
+
+	@Override
+	public boolean saveUser(UserManagmentAppBinding userManagmentAppBinding) {
+		userManagmentAppBinding.setAccStatus("LOCK");
+		userManagmentAppBinding.setPassword(genpassword());
+
+		UserAccounts accounts = new UserAccounts();
+		BeanUtils.copyProperties(userManagmentAppBinding, accounts);
+
+		UserAccounts save = userAccountrepositories.save(accounts);
+
+		if (save != null) {
+			return true;
+		} else {
+
+			return false;
+		}
+	}
+	private String genpassword() 
+	{
+		String randomAlphanumeric = RandomStringUtils.randomAlphanumeric(6);
+		return randomAlphanumeric;
+		
+	}
+
+}
