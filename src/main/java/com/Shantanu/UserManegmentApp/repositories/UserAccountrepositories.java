@@ -8,5 +8,8 @@ import org.springframework.stereotype.Repository;
 import com.Shantanu.UserManegmentApp.entities.UserAccounts;
 @Repository
 public interface UserAccountrepositories extends JpaRepository<UserAccounts, Serializable> {
-
+	
+public	UserAccounts findByEmailAndPassword(String email,String password);
+	
+	
 }

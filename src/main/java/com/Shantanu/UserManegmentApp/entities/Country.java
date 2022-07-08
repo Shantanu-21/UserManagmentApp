@@ -9,17 +9,19 @@ import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-@Data
+import lombok.NoArgsConstructor;
+
 @Entity
-@AllArgsConstructor
+@Data
+@NoArgsConstructor
 @Table(name = "COUNTRY_MASTER")
 public class Country {
 	@Id
 	@Column(name ="USER_COUNTRYID" )
-	private Integer country_id;
+	private Integer countryId;
 	@Column(name ="USER_COUNTRYNAME" )
-	private String contryname;
+	private String contryName;
 	@Column(name ="USER_COUNTRYCODE")
-	private Integer contrycode;
+	private Integer contryCode;
 	
 }
